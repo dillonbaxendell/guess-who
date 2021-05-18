@@ -20,8 +20,8 @@ function readyNow() {
     // based off their githubUsername
     for( let person of people ) {
         $( '.pictures' ).append(
-            `<div data-name=${person.name} class="profilePic">
-                <img src="https://github.com/${person.githubUsername}.png?size=250" alt="Profile image of Chris">
+            `<div data-name=${person.name} class="profilePic" id="overlay">
+                <img src="https://github.com/${person.githubUsername}.png?size=250" alt="Profile image of ${person.name}">
             </div>`
         );
     }
@@ -50,8 +50,14 @@ function guessWho() {
     // If the data variable "name" (found on the data-name on the div of each image) is equal
     // to the randomPerson that was generated, either success or try again
     if( $(this).data( 'name' ) === randomPerson()) {
-        alert("Success! You got it right!");
+        addCorrectVisuals();
+        alert("YAY! You got it right!");
+        setTimeout(function(){ location.reload() }, 3000)
     } else {
-        alert("Oops, try again!");
+        alert("Nope... try again!");
     }
+}
+
+function addCorrectVisuals() {
+    $(this).parent().addClass( 'overlay' );
 }

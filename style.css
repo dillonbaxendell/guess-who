@@ -3,3 +3,7 @@
     flex-wrap: wrap;
     position: relative;
 }
+
+.overlay {
+    background-color: green;
+}
